@@ -1,27 +1,24 @@
-# React + TypeScript + Vite
+FLEET STUDIO
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![](https://badges.aleen42.com/src/vitejs.svg)
 
-Currently, two official plugins are available:
+Pour réalisation cette application web, j'ai utilisé :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   - React 18.2 (+ react-dom & react-router-dom)
+   - Vite
+   - Typescript
+   - Tailwindcss
 
-## Expanding the ESLint configuration
+Pour la tester la procédure est la suivante :
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   - `npm i` ou `yarn install`
+   - `npm run dev` ou `yarn dev`
+   - `http://localhost:5173/`
 
-- Configure the top-level `parserOptions` property like this:
+Documents utiles :
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   - [React 18](https://reactjs.org/)
+   - [TypeScript](https://www.typescriptlang.org/)
+   - [Vite](https://vitejs.dev/)
