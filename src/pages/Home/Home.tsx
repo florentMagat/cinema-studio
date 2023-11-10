@@ -1,34 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import FilmCard from "../../components/FilmCard/FilmCard";
+import Menu from "../../components/Menu/Menu";
+import {
+    Data,
+    Playing
+} from "../../vite-env";
 
 const Home = () => {
 
-    interface Data {
-        page: number;
-        results: Array<object>;
-        total_pages: number;
-        total_results: number;
-    }
-
     const [data, setData] = useState<Data>({});
+    const [page, setPage] = useState<number>(1);
+    const [pages, setPages] = useState<number>(1);
+    const [nowPlaying, setNowPlaying] = useState<Playing>({});
+      
     const films : Array<object> = data.results;
-    console.log("TEST", films?.length)
+    const filmsPlaying : Array<object> = nowPlaying.results; 
+
+    useEffect(()=>{
+        const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+            }
+          };
+          
+          fetch('https://api.themoviedb.org/3/movie/now_playing?language=fr-FR&page=1', options)
+            .then(res => res.json())
+            .then(res => setNowPlaying(res))
+            .catch(err => console.error(err));
+    }, []);
+
+    useEffect (()=>{
+        setPages(data?.total_pages)
+    }, [data]);
 
     return (
     <div className="flex flex-row">
-        <div className="w-[25vw] h-[100vh] flex flex-col bg-sky-950 border-r-2">
-            <div className="flex flex-col w-[100%] pt-[2vh] pb-[2vh] items-center">
-                <img src={"/logo.png"} className="w-[10vw] h-[10vw] mb-2"/>
-                <h1 className="flex text-base italic text-center">
-                    "<span className="font-bold">Fleet Studio </span>: ce que le cinéma a de plus beau" 
-                </h1>
-            </div>
-            <div className="border-b-2 border-solid"></div>
-        </div>
+        <Menu />
         <div className="w-[75vw] h-[100vh] flex flex-col">
             <div className="h-[10vh]">
-                <SearchBar data={data} setData={setData} />
+                <SearchBar data={data} setData={setData} page={page} />
             </div>
             {films?.length ?
                 <div className="flex flex-row justify-center flex-wrap p-[3vh] overflow-auto gap-[2vh]">
@@ -39,8 +52,25 @@ const Home = () => {
                     }
                 </div>
             :
-                <div></div>
+                <div className="flex flex-row justify-center flex-wrap p-[3vh] overflow-auto gap-[2vh]">
+                    {
+                        filmsPlaying?.map((film) => (
+                            <FilmCard film={film} />
+                        ))
+                    }
+                </div>
             }    
+            {pages===1 || pages===undefined ? 
+                <></> 
+                : 
+                <div className="flex flex-row justify-center text-white items-center">
+                    {page===1 ? <img src={"/before.png"} className="h-[50%]" onClick={()=>setPage(pages)} />
+                        : <img src={"/before.png"} className="h-[50%]" onClick={()=>setPage(page-1)} />}
+                    {`page ${page} sur ${pages}`} 
+                    {page===pages ? <img src={"/after.png"} className="h-[50%]" onClick={()=>setPage(1)} />
+                        : <img src={"/after.png"} className="h-[50%]" onClick={()=>setPage(page+1)} />}
+                </div>
+            }
         </div>
     </div>
     )
