@@ -3,18 +3,17 @@ import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import FilmRank from "../../components/FilmRank/FilmRank";
 
-interface Data {
-    page: number;
-    results: Array<object>;
-    total_pages: number;
-    total_results: number;
-}
+//importation des types
+import {
+    Data
+} from "../../vite-env";
 
 const Menu = () => {
 
     const [rankedFilms, setRankedFilms] = useState<Data>({});
     const filmsTop : Array<object> = rankedFilms.results;
 
+    //appel API pour, au chargement de la page, récupérer le top des films les mieux classés, et afficher celui-ci dans notre menu
     useEffect(()=> {
         const options = {
             method: 'GET',

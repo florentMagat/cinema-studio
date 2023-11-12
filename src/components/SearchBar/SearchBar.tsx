@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
-const SearchBar = ({ data, setData, page }) => {
+const SearchBar = ({ data, setData, page, setPage }) => {
 
     const [query, setQuery] = useState<string>("");
     const [agreement, setAgreement] = useState<boolean>(true);
 
-    //afin de ne pas trop multiplier les appels API, j'ai fais le choix d'utiliser un handleClick plutôt que le useEffect ci-dessous
+    //afin de ne pas trop multiplier les appels API, j'ai fais le choix d'utiliser un handleClick plutôt qu'un useEffect
+    //dans mon appel API, trois variables : la recherche entrée, l'accord ou non pour afficher des films adultes et le numéro de page sélectionné (par défaut : 1).
     const handleClick = (e) => {
         e.preventDefault();
         const options = {
@@ -15,18 +16,22 @@ const SearchBar = ({ data, setData, page }) => {
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
             }
         };
+        setPage(1);
         fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${agreement}&language=fr-FR&page=${page}`, options)
         .then(res => res.json())
         .then(res => setData(res))
         .catch(err => console.error(err));
+        
     }    
 
+    //permet de valider l'input de recherche avec la touche "Entrée" (en plus du onClick)
     const handleKeypress = (e) => {
         if (e.keyCode === 13 || e.which === 13) {
           handleClick(e);
         }
     };
 
+    //ici l'appel API est encadré par un useEffect. Si dans le composant le numéro de page sélectionné change, un nouvel appel API est réalisé et les résultats sont mis à jour
     useEffect(()=>{
         const options = {
             method: 'GET',
@@ -40,8 +45,6 @@ const SearchBar = ({ data, setData, page }) => {
         .then(res => setData(res))
         .catch(err => console.error(err));
     }, [page]);
-
-    console.log(agreement)
 
     return (
         <div className="flex flex-row justify-center pt-3 pb-3 border-b-2 bg-[url('/sieges.png')] gap-[10vw]">
