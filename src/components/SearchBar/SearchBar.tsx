@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const SearchBar = ({ data, setData, page, setPage }) => {
 
     const [query, setQuery] = useState<string>("");
     const [agreement, setAgreement] = useState<boolean>(true);
+
+    // const previousAgreement = useRef<boolean>(true);
+
+    // useEffect(() => {
+    //     previousAgreement.current = agreement;
+    //   }, [agreement]);
 
     //afin de ne pas trop multiplier les appels API, j'ai fais le choix d'utiliser un handleClick plutôt qu'un useEffect
     //dans mon appel API, trois variables : la recherche entrée, l'accord ou non pour afficher des films adultes et le numéro de page sélectionné (par défaut : 1).

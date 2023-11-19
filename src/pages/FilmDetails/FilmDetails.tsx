@@ -29,13 +29,13 @@ const FilmDetails = () => {
             setLoad(false);
     }, [id])
 
-    console.log("DATA", data)
+    // console.log("DATA", data)
 
     //MISE EN FORME DES DONNEES DE DATA
     //le format de realease_date n'est pas optimal, je conserve seulement l'année
-    const date = data?.release_date.toString().slice(0,4);
+    const date = data?.release_date?.toString().slice(0,4);
     const budget = (data?.budget)?.toLocaleString("us-US");
-    const country = data?.production_countries[0].iso_3166_1;
+    const country = data?.production_countries[0]?.iso_3166_1;
   
     return(
         load ?
