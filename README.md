@@ -16,6 +16,7 @@ Pour la lancer, la procédure est la suivante :
 
    - `npm i` ou `yarn install`
    - `npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch`
+   - créer un fichier `.env.local` (voir `.env.example`)
    - `npm run dev` ou `yarn dev`
    - `http://localhost:5173/`
 

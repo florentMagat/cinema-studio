@@ -4,6 +4,7 @@ const SearchBar = ({ data, setData, page, setPage }) => {
 
     const [query, setQuery] = useState<string>("");
     const [agreement, setAgreement] = useState<boolean>(true);
+    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
     // const previousAgreement = useRef<boolean>(true);
 
@@ -19,7 +20,7 @@ const SearchBar = ({ data, setData, page, setPage }) => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+              Authorization: bearerToken,
             }
         };
         setPage(1);
@@ -43,7 +44,7 @@ const SearchBar = ({ data, setData, page, setPage }) => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+              Authorization: bearerToken,
             }
         };
         fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${agreement}&language=fr-FR&page=${page}`, options)

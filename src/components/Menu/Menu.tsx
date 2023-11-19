@@ -12,6 +12,7 @@ const Menu = () => {
 
     const [rankedFilms, setRankedFilms] = useState<Data>({});
     const filmsTop : Array<object> = rankedFilms.results;
+    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
     //appel API pour, au chargement de la page, récupérer le top des films les mieux classés, et afficher celui-ci dans notre menu
     useEffect(()=> {
@@ -19,7 +20,7 @@ const Menu = () => {
             method: 'GET',
             headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+            Authorization: bearerToken,
             }
         };
         

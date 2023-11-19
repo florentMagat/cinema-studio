@@ -11,6 +11,7 @@ const FilmDetails = () => {
     const id = useParams();
     const [data, setData] = useState<Film>();
     const [load, setLoad] = useState<boolean>(true);
+    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
     //appel API afin de récupérer un maximum de détails sur le film sélectionné
     useEffect(()=>{
@@ -18,7 +19,7 @@ const FilmDetails = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+              Authorization: bearerToken,
             }
           };
           
@@ -29,7 +30,7 @@ const FilmDetails = () => {
             setLoad(false);
     }, [id])
 
-    // console.log("DATA", data)
+    console.log("DATA", data)
 
     //MISE EN FORME DES DONNEES DE DATA
     //le format de realease_date n'est pas optimal, je conserve seulement l'année

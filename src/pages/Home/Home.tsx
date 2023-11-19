@@ -15,6 +15,7 @@ const Home = () => {
     const [page, setPage] = useState<number>(1);
     const [pages, setPages] = useState<number>(1);
     const [nowPlaying, setNowPlaying] = useState<Playing>({});
+    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
       
     const films : Array<object> = data.results;
     const filmsPlaying : Array<object> = nowPlaying.results; 
@@ -25,7 +26,7 @@ const Home = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmExMTgzM2M4ZDdiYWZkZDdmMjRkZjA3NTJjZGY0NyIsInN1YiI6IjY1NGQ1YzRjMWFjMjkyN2IyZjI4NGZmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJSMAOHC-kegTk863e-RjnZH8_QTd89ykK_-MU7MVBE'
+              Authorization: bearerToken,
             }
           };
           
