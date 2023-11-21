@@ -42,10 +42,10 @@ const Home = () => {
     }, [data]);
 
     return (
-    <div className="flex flex-row">
+    <div className="flex flex-row mobile:flex-col">
         <Menu />
-        <div className="w-[75vw] h-[100vh] flex flex-col">
-            <div className="h-[10vh]">
+        <div className="w-[75vw] h-[100vh] flex flex-col mobile:w-[100%] mobile:h-auto">
+            <div className="h-[10vh] mobile:h-auto mobile:w-[100%]">
                 {/* les données doivent circuler dans les 2 sens (descendant et ascendant) entre Home et SearchBar */}
                 <SearchBar data={data} setData={setData} page={page} setPage={setPage} />
             </div>

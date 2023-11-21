@@ -54,12 +54,12 @@ const SearchBar = ({ data, setData, page, setPage }) => {
     }, [page]);
 
     return (
-        <div className="flex flex-row justify-center pt-3 pb-3 border-b-2 bg-[url('/sieges.png')] gap-[10vw]">
-            <div className="w-[25vw] flex flex-row justify-between items-center bg-white rounded-[25px]">
+        <div className="flex flex-row justify-center pt-3 pb-3 border-b-2 bg-[url('/sieges.png')] gap-[10vw] mobile:flex-col">
+            <div className="w-[25vw] flex flex-row justify-between items-center bg-white rounded-[25px] mobile:w-full mobile:justify-center">
                 <input 
                     value={query}
                     placeholder="rechercher un film"
-                    className="w-[100%] h-full text-center italic bg-white text-[#082f49] rounded-[25px]"
+                    className="w-[100%] h-full text-center italic bg-white text-[#082f49] rounded-[25px] mobile:w-[90%]"
                     type="search"
                     onChange={(e)=>{
                         e.preventDefault();
@@ -73,8 +73,8 @@ const SearchBar = ({ data, setData, page, setPage }) => {
                     search
                 </button>
             </div>
-            <div className="flex justify-end w-[15vw] flex flex-row justify-between items-center text-xs text-center italic">
-                <p className="w-[10vw]">Exclure les films pour adultes de ma recherche : </p>
+            <div className="flex justify-end w-[15vw] flex flex-row justify-between items-center text-xs text-center italic mobile:w-[90%]">
+                <p className="w-[10vw] mobile: w-full">Exclure les films pour adultes de ma recherche : </p>
                 <button 
                     onClick={()=>setAgreement(!agreement)} 
                     className={agreement ? "flex flex-row flex-end ml-[1vw] mr-[0.5vw] h-[80%] w-[3vw] justify-center items-center rounded-[25px] bg-[#C80F0F] italic border-2 border-white"  

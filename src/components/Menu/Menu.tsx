@@ -31,24 +31,24 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="w-[25vw] h-[100vh] flex flex-col bg-sky-950 border-r-2">
-            <div className="flex flex-col w-[100%] pt-[2vh] pb-[2vh] items-center border-b-2 border-solid">
+        <div className="w-[25vw] h-[100vh] flex flex-col bg-sky-950 border-r-2 mobile:w-full mobile:h-full">
+            <div className="flex flex-col w-[100%] pt-[2vh] pb-[2vh] items-center border-b-2 border-solid mobile:h-auto">
                 <Link to="/">
                     <img 
                         src={"/logo.png"} 
-                        className="w-[10vw] h-[10vw] mb-2"
+                        className="w-[10vw] mobile:w-[25vw] mobile:h-auto"
                     />
                 </Link>
                 <h1 className="flex text-base italic text-center">
                     "<span className="font-bold">Fleet Studio </span>: ce que le cinéma a de plus beau" 
                 </h1>
             </div>
-            <div className="flex items-center justify-center gap-[2vh] h-[4vh] mt-[2vh] mb-[2vh]">
+            <div className="flex flex-row items-center justify-center gap-[2vh] h-auto pt-[2vh] pb-[2vh]">
                 <Icon icon="iconoir:star-solid" color="#f5f213" />
                 <h2 className="flex flex-col items-center justify-center text-center font-bold text-base text-yellow-400">Films les mieux notés</h2>
                 <Icon icon="iconoir:star-solid" color="#f5f213" />
             </div>
-            <div className="flex flex-col justify-center flex-nowrap overflow-scroll p-[3vh] gap-[2vh]">
+            <div className="flex flex-col h-full flex-nowrap overflow-auto p-[3vh] gap-[1.5vh]">
                 {
                     filmsTop?.map((film) => (
                         <FilmRank film={film} />
