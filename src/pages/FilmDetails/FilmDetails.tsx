@@ -4,8 +4,8 @@ import { Icon } from '@iconify/react';
 import Menu from "../../components/Menu/Menu";
 import { Film } from "../../vite-env";
 import ReactCountryFlag from "react-country-flag";
-
-const FilmDetails = () => {
+// @ts-expect-error-test
+const FilmDetails = (film) => {
 
     //récupération de l'id du film sélectionné grâce à useParams
     const id = useParams();

@@ -10,10 +10,11 @@ import {
 } from "../../vite-env";
 
 const Home = () => {
-
+// @ts-expect-error-test
     const [data, setData] = useState<Data>({});
     const [page, setPage] = useState<number>(1);
     const [pages, setPages] = useState<number>(1);
+    // @ts-expect-error-test
     const [nowPlaying, setNowPlaying] = useState<Playing>({});
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
       

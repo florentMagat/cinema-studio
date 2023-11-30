@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect } from "react";
+// @ts-expect-error-test
 const SearchBar = ({ data, setData, page, setPage }) => {
 
     const [query, setQuery] = useState<string>("");

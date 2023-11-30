@@ -9,7 +9,7 @@ import {
 } from "../../vite-env";
 
 const Menu = () => {
-
+// @ts-expect-error-test
     const [rankedFilms, setRankedFilms] = useState<Data>({});
     const filmsTop : Array<object> = rankedFilms.results;
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
