@@ -31,7 +31,7 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="w-[25vw] h-[100vh] flex flex-col bg-sky-950 border-r-2 mobile:w-full mobile:h-full">
+        <div className="w-[25vw] h-[100vh] flex flex-col bg-sky-950 border-r-2 mobile:border-r-0 mobile:w-full mobile:h-full">
             <div className="flex flex-col w-[100%] pt-[2vh] pb-[2vh] items-center border-b-2 border-solid mobile:h-auto">
                 <Link to="/">
                     <img 
@@ -40,7 +40,7 @@ const Menu = () => {
                     />
                 </Link>
                 <h1 className="flex text-base italic text-center">
-                    "<span className="font-bold">Fleet Studio </span>: ce que le cinéma a de plus beau" 
+                    "<span className="font-bold">Cinéma Studio </span>: ce que le cinéma a de plus beau" 
                 </h1>
             </div>
             <div className="flex flex-row items-center justify-center gap-[2vh] h-auto pt-[2vh] pb-[2vh]">
